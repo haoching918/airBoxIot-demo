@@ -49,7 +49,7 @@ class Map {
 		let svgLayer = L.svg();
 		// svgLayer.addTo(map)
 		let svg = d3.select('#svgele').attr('id', 'svgele');
-		d3.json("/data/taiwanTopo.json").then(function (topology) {
+		d3.json("./data/taiwanTopo.json").then(function (topology) {
 			// Convert topojson to geojson
 			let geojson = topojson.feature(topology, topology.objects.map); // replace 'yourObject' with your topojson object
 			let transform = d3.geoTransform({ point: projectPoint });
@@ -154,11 +154,9 @@ function updateCurDateIdw() {
 		return
 	}
 	let path = "./interpolate_image/" + date + "-" + (time > 9 ? time : "0" + time) + ".png"
-	console.log(path)
 	myMap.updateIdw(path)
 }
 async function getDevice(deviceId) {
-	console.log(deviceId)
 	var response = await fetch(`./data/discretized_device_week/${deviceId}.json`)
 	var deviceWeekData = await response.json()
 	myChart.setData(deviceWeekData)
