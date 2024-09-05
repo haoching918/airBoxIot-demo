@@ -49,7 +49,7 @@ class Map {
 		let svgLayer = L.svg();
 		// svgLayer.addTo(map)
 		let svg = d3.select('#svgele').attr('id', 'svgele');
-		d3.json("./data/taiwanTopo.json").then(function (topology) {
+		d3.json("./taiwanTopo.json").then(function (topology) {
 			// Convert topojson to geojson
 			let geojson = topojson.feature(topology, topology.objects.map); // replace 'yourObject' with your topojson object
 			let transform = d3.geoTransform({ point: projectPoint });
